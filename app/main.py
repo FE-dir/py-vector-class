@@ -13,15 +13,18 @@ class Vector:
     def __sub__(self, other: Vector) -> Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other) -> Vector | float:
+    def __mul__(self, other: Vector) -> Vector | float:
         if isinstance(other, (int, float)):
-            return Vector(round(self.x * other, 2), round(self.y * other, 2))
+            return Vector(round(self.x * other, 2),
+                          round(self.y * other, 2))
         elif isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
-        return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
+    def create_vector_by_two_points(cls, start_point: tuple,
+                                    end_point: tuple) -> Vector:
+        return cls(end_point[0] - start_point[0],
+                   end_point[1] - start_point[1])
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
@@ -50,6 +53,8 @@ class Vector:
         radians = math.radians(degrees)
         cos_angle = math.cos(radians)
         sin_angle = math.sin(radians)
-        new_x = self.x * cos_angle - self.y * sin_angle
-        new_y = self.x * sin_angle + self.y * cos_angle
-        return Vector(new_x, new_y)
+        new_x_coordinate = (self.x * cos_angle -
+                            self.y * sin_angle)
+        new_y_coordinate = (self.x * sin_angle +
+                            self.y * cos_angle)
+        return Vector(new_x_coordinate, new_y_coordinate)
