@@ -3,9 +3,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coordinate: float, y_coordinate: float) -> None:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
@@ -53,8 +53,6 @@ class Vector:
         radians = math.radians(degrees)
         cos_angle = math.cos(radians)
         sin_angle = math.sin(radians)
-        new_x_coordinate = (self.x * cos_angle -
-                            self.y * sin_angle)
-        new_y_coordinate = (self.x * sin_angle +
-                            self.y * cos_angle)
+        new_x_coordinate = (self.x * cos_angle - self.y * sin_angle)
+        new_y_coordinate = (self.x * sin_angle + self.y * cos_angle)
         return Vector(new_x_coordinate, new_y_coordinate)
